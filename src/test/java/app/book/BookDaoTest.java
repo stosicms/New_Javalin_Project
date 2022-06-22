@@ -10,7 +10,9 @@ public class BookDaoTest {
 
     @Test
     public void testGetBookByIsbn () {
-        assertEquals(bookDao.getAllBooks().size(), 12);
-        assertEquals(bookDao.getBookByIsbn("9789583001215"), "9789583001215");
+        assertEquals(12, bookDao.getAllBooks().size());
+        assertEquals("9789583001215", bookDao.getBookByIsbn("9789583001215").isbn);
+        assertEquals("Moby Dick", bookDao.getBookByIsbn("9789583001215").title);
+        assertEquals("Herman Melville", bookDao.getBookByIsbn("9789583001215").author);
     }
 }

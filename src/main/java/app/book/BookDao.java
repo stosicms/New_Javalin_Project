@@ -23,7 +23,7 @@ public class BookDao {
         return books;
     }
     public Book getBookByIsbn (String isbn) {
-        return books.stream().filter(book -> book.equals(isbn)).findFirst().orElse(null);
+        return books.stream().filter(book -> book.isbn.equals(isbn)).findFirst().orElse(null);
     }
     public Book getRandomBook() {
         return books.get(new Random().nextInt(books.size()));
