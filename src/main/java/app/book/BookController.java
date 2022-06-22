@@ -3,10 +3,8 @@ package app.book;
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Handler;
+
 
 public class BookController {
     static BookDao bookDao = new BookDao();
