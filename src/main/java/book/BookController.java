@@ -8,6 +8,9 @@ public class BookController {
 
     static BookDao bookDao = new BookDao();
 
+
+
+
     public static void fetchAllBooks (Context ctx){
         Map<String, Object> model = new HashMap<>();
         model.put("books", bookDao.getAllBooks());
