@@ -1,5 +1,6 @@
-package book;
+package app.book;
 
+import app.book.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +21,6 @@ class BookTest {
 
     @Test
     void checkIfIsbnIsTheSame() {
-
-
         String actualIsbn = book.getIsbn();
 
         assertEquals(expectedIsbn, actualIsbn);
@@ -29,7 +28,6 @@ class BookTest {
 
     @Test
     void checkIfTitleIsTheSame() {
-
         String actualTitle = book.getTitle();
 
         assertEquals(expectedTitle, actualTitle);
@@ -37,7 +35,6 @@ class BookTest {
 
     @Test
     void checkIfAuthorIsTheSame() {
-
         String actualAuthor = book.getAuthor();
 
         assertEquals(expectedAuthor, actualAuthor);
