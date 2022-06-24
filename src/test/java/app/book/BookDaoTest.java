@@ -1,8 +1,5 @@
 package app.book;
 
-import app.book.Book;
-import app.book.BookDao;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -20,16 +17,16 @@ class BookDaoTest {
         String author = "Herman Melville";
         Book bookIsbn = bookDao.getBookByIsbn(isbn);
 
-        assertEquals(bookIsbn.getIsbn(), isbn);
-        assertEquals(bookIsbn.getAuthor(), author);
-        assertEquals(bookIsbn.getTitle(), title);
+        assertEquals(isbn, bookIsbn.getIsbn());
+        assertEquals(author, bookIsbn.getAuthor());
+        assertEquals(title, bookIsbn.getTitle());
 
     }
 
     @Test
-    void shouldGetNullByWrongIsbn() {
-        String wrongIsbn = "1";
-        Book bookIsbn = bookDao.getBookByIsbn(wrongIsbn);
+    void shouldGetNullByInvalidIsbn() {
+        String invalidIsbn = "1";
+        Book bookIsbn = bookDao.getBookByIsbn(invalidIsbn);
 
         assertNull(bookIsbn);
     }
@@ -39,7 +36,7 @@ class BookDaoTest {
         int booksCount = 12;
         List<Book> books = bookDao.getAllBooks();
 
-        assertEquals(books.size(), booksCount);
+        assertEquals(booksCount, books.size());
     }
 
     @Test
@@ -48,8 +45,7 @@ class BookDaoTest {
         int validIsbnLength = 13;
 
         assertNotNull(randomBook);
-        assertEquals(randomBook.getIsbn().length(), validIsbnLength);
-
+        assertEquals(validIsbnLength, randomBook.getIsbn().length());
     }
 
 }

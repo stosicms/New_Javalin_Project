@@ -1,6 +1,7 @@
 package app.book;
 
 import io.javalin.http.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,8 @@ public class BookController {
         ctx.json(model);
     }
 
-    public static void fetchOneBook (Context context) {
+    public static void fetchOneBook(Context context) {
+
         Map<String, Object> model = new HashMap<>();
         String isbn = context.pathParam("isbn");
         model.put("app/book", bookDao.getBookByIsbn(isbn));
