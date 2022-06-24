@@ -17,7 +17,7 @@ public class Book {
         return author;
     }
 
-    public Book (String isbn, String title, String author) {
+    public Book (String title, String author, String isbn) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
