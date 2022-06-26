@@ -49,4 +49,19 @@ BookDaoTest {
         assertEquals(validIsbnLength, randomBook.getIsbn().length());
     }
 
+    @Test
+    void shouldSaveBook() {
+        String isbn = "9000583001215";
+        String title = "Test Title";
+        String author = "Test Author";
+        bookDao.saveOne(new Book(title, author, isbn));
+        Book savedBook = bookDao.getBookByIsbn(isbn);
+
+        assertNotNull(savedBook);
+        assertEquals(isbn, savedBook.isbn);
+        assertEquals(title, savedBook.title);
+        assertEquals(author, savedBook.author);
+
+    }
+
 }
