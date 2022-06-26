@@ -6,7 +6,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BookDaoTest {
+class
+BookDaoTest {
 
     private final BookDao bookDao = new BookDao();
 
