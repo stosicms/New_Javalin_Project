@@ -3,7 +3,9 @@ package app.book;
 import org.junit.Test;
 
 import java.awt.*;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -82,5 +84,39 @@ public class BookDaoTest {
         assertEquals("9780439291491", bookDao.getBookByIsbn(isbn12).isbn);
         assertEquals("Alice In Wonderland", bookDao.getBookByIsbn(isbn12).title);
         assertEquals("Lewis Carrol", bookDao.getBookByIsbn(isbn12).author);
+    }
+    @Test
+    public void testAddBook () {
+        String isbn13 = "9788661050930";
+        bookDao.addBook("9788661050930", "Ivo Andric", "Na Drini cuprija");
+
+        assertEquals("9788661050930", bookDao.getBookByIsbn(isbn13).isbn);
+        assertEquals("Ivo Andric", bookDao.getBookByIsbn(isbn13).author);
+        assertEquals("Na Drini cuprija", bookDao.getBookByIsbn(isbn13).title);
+    }
+
+    @Test
+    public void testAddBooks () {
+        List<Book> newList = List.of(
+                new Book("The Sicilian", "Mario Puzo", "9780099580799"),
+                new Book("Death and the dervish", "Mesa Selimovic", "9788610023633"));
+        bookDao.addBooks(newList);
+
+        String isbn14 = "9780099580799";
+        assertEquals("9780099580799", bookDao.getBookByIsbn(isbn14).isbn);
+        assertEquals("Mario Puzo", bookDao.getBookByIsbn(isbn14).author);
+        assertEquals("The Sicilian", bookDao.getBookByIsbn(isbn14).title);
+
+        String isbn15 = "9788610023633";
+        assertEquals("9788610023633", bookDao.getBookByIsbn(isbn15).isbn);
+        assertEquals("Mesa Selimovic", bookDao.getBookByIsbn(isbn15).author);
+        assertEquals("Death and the dervish", bookDao.getBookByIsbn(isbn15).title);
+    }
+    @Test
+    public void testDeleteBookByIsbn () {
+        String isbn = "9780439291491";
+        bookDao.deleteBookByIsbn(isbn);
+
+        assertNull(bookDao.getBookByIsbn(isbn));
     }
 }

@@ -12,7 +12,7 @@ public class UserDao {
 
     public User getUserByUsername (String username) {
         for (User user:users) {
-            if (username != null && username.equals(user.username)){
+            if (username.equals(user.username)){
                 return user;
             }
         }
