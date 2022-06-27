@@ -5,10 +5,10 @@ public class Book {
     public final String title;
     public final String author;
 
-    public Book(String isbn, String title, String author) {
-        this.isbn = isbn;
+    public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
+        this.isbn = isbn;
     }
 
     public String getIsbn(){
