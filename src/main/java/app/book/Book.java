@@ -1,9 +1,11 @@
 package app.book;
 
 public class Book {
-    public final String isbn;
-    public final String title;
-    public final String author;
+    public String isbn;
+    public String title;
+    public String author;
+
+    public Book () {}
 
     public String getIsbn() {
         return isbn;

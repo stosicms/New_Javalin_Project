@@ -87,12 +87,15 @@ public class BookDaoTest {
     }
     @Test
     public void testAddBook () {
-        String isbn13 = "9788661050930";
-        bookDao.addBook("9788661050930", "Ivo Andric", "Na Drini cuprija");
+        String isbn = "9788661050930";
+        String author = "Ivo Andric";
+        String title = "Na Drini cuprija";
+        Book newBook = new Book(title, author, isbn);
+        bookDao.addBook(newBook);
 
-        assertEquals("9788661050930", bookDao.getBookByIsbn(isbn13).isbn);
-        assertEquals("Ivo Andric", bookDao.getBookByIsbn(isbn13).author);
-        assertEquals("Na Drini cuprija", bookDao.getBookByIsbn(isbn13).title);
+        assertEquals(isbn, bookDao.getBookByIsbn(isbn).isbn);
+        assertEquals(author, bookDao.getBookByIsbn(isbn).author);
+        assertEquals(title, bookDao.getBookByIsbn(isbn).title);
     }
 
     @Test

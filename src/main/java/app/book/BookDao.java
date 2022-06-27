@@ -37,8 +37,8 @@ public class BookDao {
         return books.get(new Random().nextInt(books.size()));
     }
 
-    public void addBook (String isbn, String author, String title) {
-        books.add(new Book(title, author, isbn));
+    public void addBook (Book book) {
+        books.add(book);
     }
     public void addBooks (List<Book> newBooks) {
         books.addAll(newBooks);

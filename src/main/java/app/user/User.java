@@ -1,9 +1,11 @@
 package app.user;
 
 public class User {
-    public final String username;
-    public final String salt;
-    public final String hashedPassword;
+    public String username;
+    public String salt;
+    public String hashedPassword;
+
+    public User () {}
 
     public String getUsername() {
         return username;

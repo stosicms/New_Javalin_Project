@@ -6,6 +6,6 @@ public class Path {
         public static final String ONE_BOOK = "/isbn/{isbn}";
         public static final String USERNAMES = "/usernames";
         public static final String USERNAME = "/username/{username}";
-        public static final String ADD_BOOK = "/addBook/{title}, {author}, {isbn}";
+        public static final String ADD_BOOK = "/addBook";
     }
 }
