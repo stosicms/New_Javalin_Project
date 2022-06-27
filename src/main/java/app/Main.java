@@ -12,6 +12,8 @@ public class Main {
             Javalin app = Javalin.create().start(7001);
             app.get("/books", BookController::fetchAllBooks);
 
+            app.post("/book", BookController::saveBook);
+
 
 
 
