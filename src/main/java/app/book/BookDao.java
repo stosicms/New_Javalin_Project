@@ -8,7 +8,7 @@ import java.util.Random;
 public class BookDao {
     private List<Book> books = new ArrayList<>();
     public BookDao() {
-        books.add( new Book("Moby Dick", "Herman Melville", "9789583001215"));
+        books.add(new Book("Moby Dick", "Herman Melville", "9789583001215"));
         books.add(new Book("A Christmas Carol", "Charles Dickens", "9780141324524"));
         books.add(new Book("Pride and Prejudice", "Jane Austen", "9781936594290"));
         books.add(new Book("The Fellowship of The Ring", "J. R. R. Tolkien", "0007171978"));
