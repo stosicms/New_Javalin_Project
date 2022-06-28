@@ -42,7 +42,12 @@ public class BookDao {
     }
 
     public boolean addBook(Book book){
-        return books.add(book);
+        Book bookInDb = getBookByIsbn(book.getIsbn());
+        if(bookInDb == null){
+            return books.add(book);
+        }else{
+            return false;
+        }
     };
 
     public boolean addBooks(List<Book> book){

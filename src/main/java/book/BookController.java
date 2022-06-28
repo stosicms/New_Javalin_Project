@@ -40,10 +40,11 @@ public class BookController {
     };
 
     public static void addBooks(Context ctx) {
-//        Gson gson = new Gson();
-//        String body = ctx.body();
-//
-
+        Gson gson = new Gson();
+        String body = ctx.body();
+        List<Book> book = gson.fromJson(body, ArrayList.class);
+        boolean booksAdded = bookDao.addBooks(book);
+        ctx.json(booksAdded ? "Successful" : "Unsuccessful");
     };
 
 
