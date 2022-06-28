@@ -11,8 +11,7 @@ public class Main {
         app.get("/books", BookController::fetchAllBooks);
         app.get("/books/{isbn}", BookController::fetchOneBook);
         app.delete("/books/{isbn}", BookController::deleteOneBook);
-        app.post("/books", BookController::addBook);
-        //app.post("/books", BookController::addBooks);
-        
+        //app.post("/books", BookController::addBook);
+        app.post("/books", BookController::addBooks);
     }
 }

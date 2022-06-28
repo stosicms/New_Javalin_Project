@@ -3,6 +3,7 @@ package book;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,11 +39,12 @@ public class BookController {
         ctx.json(bookAdded ? "Successful" : "Unsuccessful");
     };
 
-//    public static void addBooks(Context ctx) {
+    public static void addBooks(Context ctx) {
 //        Gson gson = new Gson();
 //        String body = ctx.body();
-//        List <Book> book =
-//    };
+//
+
+    };
 
 
 

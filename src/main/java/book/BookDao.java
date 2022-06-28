@@ -45,6 +45,10 @@ public class BookDao {
         return books.add(book);
     };
 
+    public boolean addBooks(List<Book> book){
+        return books.addAll(book);
+    };
+
 
     public Book GetRandomBook() {
         return books.get(new Random().nextInt(books.size()));
