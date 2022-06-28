@@ -7,5 +7,7 @@ public class Path {
         public static final String USERNAMES = "/usernames";
         public static final String USERNAME = "/username/{username}";
         public static final String ADD_BOOK = "/addBook";
+        public static final String ADD_BOOKS = "/addBooks";
+        public static final String DELETE_BOOK = "/deleteBook/{isbn}";
     }
 }

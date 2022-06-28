@@ -1,8 +1,12 @@
 package app.book;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -33,7 +37,15 @@ public class BookController {
         bookDao.addBook(newBook);
         context.status(201);
     }
-    public static void addBooks (Context context) {
-
+    public static void addBooks (Context context) throws JsonProcessingException {
+        var bookStr = context.body();
+        final ObjectMapper objectMapper = new ObjectMapper();
+        Book[] bookAr = objectMapper.readValue(bookStr, Book[].class);
+        List<Book> newBooks = new ArrayList<>(Arrays.asList(bookAr));
+        bookDao.addBooks(newBooks);
+    }
+    public static void deleteBook (Context context) {
+        var isbn = context.pathParam("isbn");
+        bookDao.deleteBookByIsbn(isbn);
     }
 }
