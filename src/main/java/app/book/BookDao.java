@@ -21,9 +21,11 @@ public class BookDao {
         books.add(new Book("The adventures of Huckleberry Finn", "Mark Twain", "9781591940296"));
         books.add(new Book("Alice In Wonderland", "Lewis Carrol", "9780439291491"));
     }
+
     public List<Book> getAllBooks() {
         return books;
     }
+
     public Book getBookByIsbn (String isbn) {
         for (Book book : books) {
             if (book.isbn.equals(isbn)) {
@@ -40,9 +42,11 @@ public class BookDao {
     public void addBook (Book book) {
         books.add(book);
     }
+
     public void addBooks (List<Book> newBooks) {
         books.addAll(newBooks);
     }
+
     public void deleteBookByIsbn (String isbn) {
         Book book = getBookByIsbn(isbn);
         books.remove(book);
