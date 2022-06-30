@@ -1,20 +1,24 @@
 import app.book.BookController;
 import app.user.UserController;
-import app.registration.UserSignUpController;
 import io.javalin.Javalin;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        BookController bookController = new BookController();
+        UserController userController = new UserController();
+
+
+
         Javalin app = Javalin.create().start(7000);
 
-        app.get("/books", BookController::fetchAllBooks);
-        app.get("/book/{isbn}", BookController::fetchOneBook);
-        app.post("/book", BookController::saveBook);
-        app.post("/books", BookController::saveBooks);
-        app.post("/login", UserController::logIn);
-        app.post("/signup", UserSignUpController::signUp);
-        app.get("/users", UserSignUpController::getAllUsers);
+        app.get("/books", bookController::fetchAllBooks);
+        app.get("/book/{isbn}", bookController::fetchOneBook);
+        app.post("/book", bookController::saveBook);
+        app.post("/books", bookController::saveBooks);
+        app.post("/login", userController::logIn);
+        app.post("/signup", userController::signUp);
+
     }
 }

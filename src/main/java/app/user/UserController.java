@@ -7,17 +7,16 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class UserController {
 
-    static Gson gson = new Gson();
+    Gson gson = new Gson();
 
-    static UserDao userDao = UserDao.getInstance();
+    UserDao userDao = UserDao.getInstance();
 
-    public static Context logIn(Context ctx) {
+    public Context logIn(Context ctx) {
         String requestBodyAsString = ctx.body();
-        User requestBodyAsJson = gson.fromJson(requestBodyAsString, User.class);
+        User requestBodyAsJson = gson.fromJson(ctx.body(), User.class);
 
 
         if (requestBodyAsJson.username == null || requestBodyAsJson.password == null) {
@@ -43,15 +42,29 @@ public class UserController {
             return ctx.status(400).json(model);
         }
 
+
+        return ctx.status(200).json(generateToken(requestBodyAsJson.username));
+    }
+    private Map<String, String> generateToken(String username) {
         Map<String, String> model = new HashMap<>();
 
         String jwtToken = Jwts.builder()
-                .claim("username", requestBodyAsJson.username)
-                .setId(UUID.randomUUID().toString())
+                .claim("username", username)
                 .compact();
-        // todo kako generisati token
         model.put("response", jwtToken);
-        return ctx.status(200).json(model);
+        return model;
+    }
+    public Context signUp(Context ctx) {
+        String requestBodyAsString = ctx.body();
+        User requestBodyAsJson = gson.fromJson(requestBodyAsString, User.class);
+
+        String salt = BCrypt.gensalt();
+
+        String hashedPassword = BCrypt.hashpw(requestBodyAsJson.password, salt);
+        User newUser = new User(requestBodyAsJson.username, salt, hashedPassword);
+        userDao.saveOneUser(newUser);
+
+        return ctx.status(200).json(generateToken(requestBodyAsJson.username));
     }
 
 
