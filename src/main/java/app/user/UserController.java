@@ -2,16 +2,18 @@ package app.user;
 
 import com.google.gson.Gson;
 import io.javalin.http.Context;
+import io.jsonwebtoken.Jwts;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class UserController {
 
     static Gson gson = new Gson();
 
-    static UserDao userDao = new UserDao();
+    static UserDao userDao = UserDao.getInstance();
 
     public static Context logIn(Context ctx) {
         String requestBodyAsString = ctx.body();
@@ -43,8 +45,12 @@ public class UserController {
 
         Map<String, String> model = new HashMap<>();
 
+        String jwtToken = Jwts.builder()
+                .claim("username", requestBodyAsJson.username)
+                .setId(UUID.randomUUID().toString())
+                .compact();
         // todo kako generisati token
-        model.put("response", "Token");
+        model.put("response", jwtToken);
         return ctx.status(200).json(model);
     }
 
