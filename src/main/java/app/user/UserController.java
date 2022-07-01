@@ -1,5 +1,6 @@
 package app.user;
 
+import app.user.DTOs.UserCredentialsDto;
 import com.google.gson.Gson;
 import io.javalin.http.Context;
 import io.jsonwebtoken.Jwts;
@@ -14,37 +15,6 @@ public class UserController {
 
     UserDao userDao = UserDao.getInstance();
 
-    public Context logIn(Context ctx) {
-        String requestBodyAsString = ctx.body();
-        User requestBodyAsJson = gson.fromJson(ctx.body(), User.class);
-
-
-        if (requestBodyAsJson.username == null || requestBodyAsJson.password == null) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "Missing username or password");
-            return ctx.status(400).json(model);
-        }
-
-        User user = userDao.getUserByUsername(requestBodyAsJson.username);
-        if (user == null) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "User not found");
-            return ctx.status(400).json(model);
-        }
-
-        String hashedPassword = BCrypt.hashpw(requestBodyAsJson.password, user.salt);
-
-        boolean areUsersCredentialsValid = hashedPassword.equals(user.password);
-
-        if (!areUsersCredentialsValid) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "Bad credentials");
-            return ctx.status(400).json(model);
-        }
-
-
-        return ctx.status(200).json(generateToken(requestBodyAsJson.username));
-    }
     private Map<String, String> generateToken(String username) {
         Map<String, String> model = new HashMap<>();
 
@@ -54,17 +24,46 @@ public class UserController {
         model.put("response", jwtToken);
         return model;
     }
+
+    public Context logIn(Context ctx) {
+        UserCredentialsDto userCredentialsDto = gson.fromJson(ctx.body(), UserCredentialsDto.class);
+
+
+        if (userCredentialsDto.username == null || userCredentialsDto.password == null) {
+            Map<String, String> model = new HashMap<>();
+            model.put("error", "Missing username or password");
+            return ctx.status(400).json(model);
+        }
+
+        User user = userDao.getUserByUsername(userCredentialsDto.username);
+        if (user == null) {
+            Map<String, String> model = new HashMap<>();
+            model.put("error", "User not found");
+            return ctx.status(400).json(model);
+        }
+
+        String hashedPassword = BCrypt.hashpw(userCredentialsDto.password, user.salt);
+
+        boolean areUsersCredentialsValid = hashedPassword.equals(user.password);
+
+        if (!areUsersCredentialsValid) {
+            Map<String, String> model = new HashMap<>();
+            model.put("error", "Bad credentials");
+            return ctx.status(400).json(model);
+        }
+
+        return ctx.status(200).json(generateToken(userCredentialsDto.username));
+    }
     public Context signUp(Context ctx) {
-        String requestBodyAsString = ctx.body();
-        User requestBodyAsJson = gson.fromJson(requestBodyAsString, User.class);
+        UserCredentialsDto userCredentialsDto = gson.fromJson(ctx.body(), UserCredentialsDto.class);
 
         String salt = BCrypt.gensalt();
 
-        String hashedPassword = BCrypt.hashpw(requestBodyAsJson.password, salt);
-        User newUser = new User(requestBodyAsJson.username, salt, hashedPassword);
+        String hashedPassword = BCrypt.hashpw(userCredentialsDto.password, salt);
+        User newUser = new User(userCredentialsDto.username, salt, hashedPassword);
         userDao.saveOneUser(newUser);
 
-        return ctx.status(200).json(generateToken(requestBodyAsJson.username));
+        return ctx.status(200).json(generateToken(userCredentialsDto.username));
     }
 
 
