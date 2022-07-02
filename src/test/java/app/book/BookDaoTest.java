@@ -1,8 +1,13 @@
 package app.book;
 
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,6 +66,39 @@ BookDaoTest {
         assertEquals(isbn, savedBook.isbn);
         assertEquals(title, savedBook.title);
         assertEquals(author, savedBook.author);
+
+    }
+
+    @Test
+    public void shouldSaveBookCon() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        String isbn = "9789583001215";
+        String title = "Moby Dick";
+        String author = "Herman Melville";
+        Book book1 = new Book(isbn, title, author);
+        bookDao.saveOne(book1);
+
+        CompletableFuture<Void> f1 = CompletableFuture.runAsync(() -> {
+            bookDao.saveOne(book1);
+        });
+
+        CompletableFuture<Void> f2 = CompletableFuture.runAsync(() -> {
+            bookDao.saveOne(book1);
+        });
+
+        f1.thenCombine(f2, (v1, v2) -> {
+            System.out.println("Zavrsili smo cuvanje");
+            return null;
+        }).get();
+
+        List<Book> books = bookDao.getAllBooks();
+
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(books));
+
+        assertEquals(isbn, book1.getIsbn());
+        assertEquals(author, book1.getAuthor());
+        assertEquals(title, book1.getTitle());
 
     }
 

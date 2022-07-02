@@ -13,7 +13,7 @@ class BookControllerTest {
 
     private final Context ctx = mock(Context.class);
 
-
+    BookDao bookDao = new BookDao();
     @Test
     void shouldFetchAllBooks() {
         Context ctx = mock(Context.class);

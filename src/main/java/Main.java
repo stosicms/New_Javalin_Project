@@ -6,19 +6,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BookController bookController = new BookController();
-        UserController userController = new UserController();
+//        BookController bookController = new BookController();
+//        UserController userController = new UserController();
 
 
 
         Javalin app = Javalin.create().start(7000);
 
-        app.get("/books", bookController::fetchAllBooks);
-        app.get("/book/{isbn}", bookController::fetchOneBook);
-        app.post("/book", bookController::saveBook);
-        app.post("/books", bookController::saveBooks);
-        app.post("/login", userController::logIn);
-        app.post("/signup", userController::signUp);
+        app.get("/books", BookController::fetchAllBooks);
+        app.get("/book/{isbn}", BookController::fetchOneBook);
+        app.post("/book", BookController::saveBook);
+        app.post("/books", BookController::saveBooks);
+//        app.post("/login", BookController::logIn);
+//        app.post("/signup", BookController::signUp);
 
     }
 }
