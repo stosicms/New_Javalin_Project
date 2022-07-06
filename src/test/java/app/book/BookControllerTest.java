@@ -13,19 +13,18 @@ class BookControllerTest {
 
     private final Context ctx = mock(Context.class);
 
-    BookDao bookDao = new BookDao();
+    BookDao bookDao =  BookDao.getInstance();
     @Test
     void shouldFetchAllBooks() {
-        Context ctx = mock(Context.class);
         BookController.fetchAllBooks(ctx);
         Map<String, Object> model = new HashMap<>();
         model.put("result", bookDao.getAllBooks());
         verify(ctx).json(model);
+        System.out.println(model);
     }
 
     @Test
     void shouldFetchOneBook() {
-        Context ctx = mock(Context.class);
         when(ctx.pathParam("isbn")).thenReturn("9789583001215");
         BookController.fetchOneBook(ctx);
         Map<String, Object> model = new HashMap<>();
@@ -34,7 +33,7 @@ class BookControllerTest {
     }
 
     @Test
-    void shouldSaveBook() {
+    void shouldSaveBook() throws Exception {
         when(ctx.body()).thenReturn("{\n" +
                 "        \"isbn\": \"9781591940200\",\n" +
                 "        \"title\": \"The adventures of 2 Huckleberry Finn\",\n" +

@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class BookController {
 
-    static BookDao bookDao = new BookDao();
+    static BookDao bookDao = BookDao.getInstance();
     static Gson gson = new Gson();
 
     private static <T> List<T> getListFromJson(String jsonArray, Class<T> clazz) {
@@ -32,7 +32,7 @@ public class BookController {
         context.json(model);
     }
 
-    public static void saveBook(Context ctx) {
+    public static void saveBook(Context ctx) throws Exception {
         String requestBodyAsString = ctx.body();
         Book requestBodyAsJson = gson.fromJson(requestBodyAsString, Book.class);
         Book newBook = new Book(requestBodyAsJson.title, requestBodyAsJson.author, requestBodyAsJson.isbn);

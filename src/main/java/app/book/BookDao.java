@@ -1,12 +1,16 @@
 package app.book;
 
+import app.user.UserDao;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class BookDao {
-    private List<Book> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
+
+    private static BookDao bookDao;
     public BookDao() {
         books.add(new Book("Moby Dick", "Herman Melville", "9789583001215"));
         books.add(new Book("A Christmas Carol", "Charles Dickens", "9780141324524"));
@@ -23,6 +27,15 @@ public class BookDao {
 
     }
 
+    public static BookDao getInstance() {
+        synchronized (BookDao.class) {
+            if(bookDao == null) {
+                bookDao = new BookDao();
+            }
+        }
+        return bookDao;
+    }
+
     public List<Book> getAllBooks() {
         return books;
     }
@@ -36,7 +49,12 @@ public class BookDao {
         return books.get(new Random().nextInt(books.size()));
     }
 
-    public void saveOne(Book book) {
+    public void saveOne(Book book) throws Exception {
+      Book foundBook = getBookByIsbn(book.getIsbn());
+        if (foundBook != null) {
+            throw new Exception("Book already exists");
+        }
+
        books.add(book);
     }
 
