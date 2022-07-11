@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static app.book.BookController.bookDao;
 import static org.mockito.Mockito.*;
 
 class BookControllerTest {
 
     private final Context ctx = mock(Context.class);
 
+    BookController bookController = new BookController();
     BookDao bookDao =  BookDao.getInstance();
     @Test
     void shouldFetchAllBooks() {
-        BookController.fetchAllBooks(ctx);
+        bookController.fetchAllBooks(ctx);
         Map<String, Object> model = new HashMap<>();
         model.put("result", bookDao.getAllBooks());
         verify(ctx).json(model);
@@ -26,7 +26,7 @@ class BookControllerTest {
     @Test
     void shouldFetchOneBook() {
         when(ctx.pathParam("isbn")).thenReturn("9789583001215");
-        BookController.fetchOneBook(ctx);
+        bookController.fetchOneBook(ctx);
         Map<String, Object> model = new HashMap<>();
         model.put("result", bookDao.getBookByIsbn("9789583001215"));
         verify(ctx).json(model);
@@ -40,7 +40,7 @@ class BookControllerTest {
                 "        \"author\": \"Mark Twain\"\n" +
                 "    }");
 
-        BookController.saveBook(ctx);
+        bookController.saveBook(ctx);
         verify(ctx).status(201);
     }
 }
