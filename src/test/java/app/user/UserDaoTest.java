@@ -12,8 +12,8 @@ class UserDaoTest {
     @Test
     void shouldGetUserByUsername() {
         String username = "perwendel";
-        String salt = "$2a$10$h.dl5J86rGH7I8bD9bZeZe";
-        String password = "$2a$10$h.dl5J86rGH7I8bD9bZeZeci0pDt0.VwFTGujlnEaZXPf/q7vM5wO";
+        String salt = "$2a$10$ItiCBD2OlV6mUPXwSjjxIO";
+        String password = "$2a$10$ItiCBD2OlV6mUPXwSjjxIOap5I4I//hcajYnsDBScWSS4E0njQJpi";
         User userUsername = userDao.getUserByUsername(username);
 
         assertEquals(username, userUsername.username);

@@ -1,5 +1,6 @@
 package app.book;
 
+import com.google.gson.Gson;
 import io.javalin.http.Context;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +12,9 @@ import static org.mockito.Mockito.*;
 class BookControllerTest {
 
     private final Context ctx = mock(Context.class);
+    BookDao bookDao = new BookDao();
+    BookController bookController = new BookController(bookDao, new Gson());
 
-    BookController bookController = new BookController();
-    BookDao bookDao =  BookDao.getInstance();
     @Test
     void shouldFetchAllBooks() {
         bookController.fetchAllBooks(ctx);

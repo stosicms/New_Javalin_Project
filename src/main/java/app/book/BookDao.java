@@ -7,7 +7,7 @@ import java.util.Random;
 public class BookDao {
     private final List<Book> books = new ArrayList<>();
 
-    private static BookDao bookDao;
+    //private static BookDao bookDao;
     public BookDao() {
         books.add(new Book("Moby Dick", "Herman Melville", "9789583001215"));
         books.add(new Book("A Christmas Carol", "Charles Dickens", "9780141324524"));
@@ -24,14 +24,14 @@ public class BookDao {
 
     }
 
-    public static BookDao getInstance() {
-        synchronized (BookDao.class) {
-            if(bookDao == null) {
-                bookDao = new BookDao();
-            }
-        }
-        return bookDao;
-    }
+//    public static BookDao getInstance() {
+//        synchronized (BookDao.class) {
+//            if(bookDao == null) {
+//                bookDao = new BookDao();
+//            }
+//        }
+//        return bookDao;
+//    }
 
     public List<Book> getAllBooks() {
         return books;

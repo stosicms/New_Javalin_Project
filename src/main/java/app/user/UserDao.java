@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserDao {
-    private static UserDao userDao;
+    //private static UserDao userDao;
     private static final List<User> users = new ArrayList<>();
 
     public UserDao() {
@@ -14,14 +14,14 @@ public class UserDao {
         users.add(new User("federico", "$2a$10$E3DgchtVry3qlYlzJCsyxe", "$2a$10$E3DgchtVry3qlYlzJCsyxeSK0fftK4v0ynetVCuDdxGVl1obL.ln2"));
     }
 
-    public static UserDao getInstance() {
-        synchronized (UserDao.class) {
-            if(userDao == null) {
-                userDao = new UserDao();
-            }
-        }
-        return userDao;
-    }
+//    public static UserDao getInstance() {
+//        synchronized (UserDao.class) {
+//            if(userDao == null) {
+//                userDao = new UserDao();
+//            }
+//        }
+//        return userDao;
+//    }
 
     public User getUserByUsername(String username) {
         return users.stream().filter(u -> u.username.equals(username)).findFirst().orElse(null);

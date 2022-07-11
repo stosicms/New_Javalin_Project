@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class
 BookDaoTest {
 
-    private final BookDao bookDao = BookDao.getInstance();
+    private final BookDao bookDao = new BookDao();
 
     @Test
     public void shouldGetBookByIsbn() {

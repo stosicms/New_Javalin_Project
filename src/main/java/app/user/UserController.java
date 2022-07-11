@@ -12,14 +12,15 @@ import java.util.Map;
 public class UserController {
 
     private final JwtHelper jwtHelper;
-    Gson gson = new Gson();
-
-    UserDao userDao = UserDao.getInstance();
+    Gson gson;
+    UserDao userDao;
 
   
 
-    public UserController(JwtHelper jwtHelper){
+    public UserController(JwtHelper jwtHelper, Gson gson, UserDao userDao){
         this.jwtHelper = jwtHelper;
+        this.gson = gson;
+        this.userDao = userDao;
     }
 
     public void logIn(Context ctx) {

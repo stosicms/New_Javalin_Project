@@ -10,9 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 public class BookController {
+    Gson gson;
+    BookDao bookDao;
+    public BookController(BookDao bookDao, Gson gson) {
+        this.bookDao = bookDao;
+        this.gson = gson;
+    }
 
-    static BookDao bookDao = BookDao.getInstance();
-    static Gson gson = new Gson();
 
     private <T> List<T> getListFromJson(String jsonArray, Class<T> clazz) {
         Type typeOfT = TypeToken.getParameterized(List.class, clazz).getType();

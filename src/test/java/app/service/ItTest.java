@@ -1,6 +1,8 @@
 package app.service;
 
 import app.book.BookController;
+import app.book.BookDao;
+import com.google.gson.Gson;
 import io.javalin.Javalin;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,12 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ItTest {
     static Javalin app = Javalin.create();
     HttpClient client = HttpClient.newHttpClient();
-
-    static BookController bookController = new BookController();
-
-
+    BookDao bookDao;
+    BookController bookController;
     @BeforeAll
     static void startJavalin() {
+        BookDao bookDao = new BookDao();
+        BookController bookController = new BookController(bookDao, new Gson());
+
         app.start(7000);
 
         app.get("/books", bookController::fetchAllBooks);
