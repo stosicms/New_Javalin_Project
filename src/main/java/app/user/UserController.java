@@ -4,6 +4,7 @@ import app.helpers.JwtHelper;
 import app.user.DTOs.UserCredentialsDto;
 import com.google.gson.Gson;
 import io.javalin.http.Context;
+import io.javalin.http.HttpResponseException;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.HashMap;
@@ -27,18 +28,12 @@ public class UserController {
         UserCredentialsDto userCredentialsDto = gson.fromJson(ctx.body(), UserCredentialsDto.class);
 
         if (userCredentialsDto.username == null || userCredentialsDto.password == null) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "Missing username or password");
-            ctx.status(400).json(model);
-            return;
+            throw new HttpResponseException(400, "Missing username or password");
         }
 
         User user = userDao.getUserByUsername(userCredentialsDto.username);
         if (user == null) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "User not found");
-            ctx.status(400).json(model);
-            return;
+            throw new HttpResponseException(400, "User not found");
         }
 
         String hashedPassword = BCrypt.hashpw(userCredentialsDto.password, user.salt);
@@ -47,10 +42,7 @@ public class UserController {
 
 
         if (!areUsersCredentialsValid) {
-            Map<String, String> model = new HashMap<>();
-            model.put("error", "Bad credentials");
-            ctx.status(400).json(model);
-            return;
+            throw new HttpResponseException(400, "Bad credentials");
         }
 
         ctx.json(jwtHelper.generateToken(userCredentialsDto.username));

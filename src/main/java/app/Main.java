@@ -3,12 +3,13 @@ package app;
 import app.book.BookController;
 import app.book.BookDao;
 import app.helpers.AuthentificationHandler;
+import app.helpers.ErrorHandler;
 import app.helpers.JwtHelper;
 import app.user.UserController;
 import app.user.UserDao;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
-import io.javalin.http.Handler;
+import io.javalin.http.HttpResponseException;
 
 public class Main {
 
@@ -21,10 +22,12 @@ public class Main {
         JwtHelper jwtHelper = new JwtHelper();
         AuthentificationHandler authentificationHandler = new AuthentificationHandler(jwtHelper, userDao);
         UserController userController = new UserController(jwtHelper, gson, userDao);
+        ErrorHandler errorHandler = new ErrorHandler();
+        //HttpError httpError =
 
         Javalin app = Javalin.create().start(7000);
-//        app.before("/", authentificationHandler.validateUser);
 
+        app.exception(HttpResponseException.class, errorHandler::httpError);
         app.before("/protected/*", authentificationHandler::validateUser);
         app.get("/protected/books", bookController::fetchAllBooks);
         app.get("/protected/book/{isbn}", bookController::fetchOneBook);
