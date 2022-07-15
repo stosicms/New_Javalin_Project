@@ -2,6 +2,8 @@ package app;
 
 import app.book.BookController;
 import app.book.BookDao;
+import app.book.repository.BookRepository;
+import app.config.DbConfig;
 import app.helpers.AuthentificationHandler;
 import app.helpers.ErrorHandler;
 import app.helpers.JwtHelper;
@@ -11,9 +13,17 @@ import com.google.gson.Gson;
 import io.javalin.Javalin;
 import io.javalin.http.HttpResponseException;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+        DbConfig dbConfig = new DbConfig();
+        Connection connection = dbConfig.connect();
+        BookRepository bookRepository = new BookRepository(connection);
+        bookRepository.dbPing();
 
         UserDao userDao = new UserDao();
         Gson gson = new Gson();
@@ -23,7 +33,7 @@ public class Main {
         AuthentificationHandler authentificationHandler = new AuthentificationHandler(jwtHelper, userDao);
         UserController userController = new UserController(jwtHelper, gson, userDao);
         ErrorHandler errorHandler = new ErrorHandler();
-        //HttpError httpError =
+
 
         Javalin app = Javalin.create().start(7000);
 
@@ -39,5 +49,10 @@ public class Main {
 
 
 
+    }
+
+    public static void main(String args) {
+        DbConfig dbConfig = new DbConfig();
+        dbConfig.runMigrationsUp();
     }
 }
