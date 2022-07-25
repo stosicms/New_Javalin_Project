@@ -32,7 +32,6 @@ public class AuthentificationHandler {
 
         try {
             String[] TokenArray = authorizationHeaderWithBearerPrefix.split(" ");
-
             Jwt<JwsHeader, Claims> decodedToken =  jwtHelper.parseToken( TokenArray[1]);
             Object username = decodedToken.getBody().get("username");
             User user =  userDao.getUserByUsername((String) username);

@@ -1,10 +1,15 @@
 package app.book;
 
+import org.flywaydb.core.internal.jdbc.JdbcTemplate;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class BookDao {
+    JdbcTemplate jdbcTemplate;
+
     private final List<Book> books = new ArrayList<>();
 
     //private static BookDao bookDao;
@@ -32,6 +37,7 @@ public class BookDao {
 //        }
 //        return bookDao;
 //    }
+
 
     public List<Book> getAllBooks() {
         return books;

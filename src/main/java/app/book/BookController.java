@@ -1,20 +1,24 @@
 package app.book;
 
+import app.book.repository.BookRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.javalin.http.Context;
 
 import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class BookController {
+    BookRepository bookRepository;
     Gson gson;
     BookDao bookDao;
-    public BookController(BookDao bookDao, Gson gson) {
+    public BookController(BookDao bookDao, Gson gson, BookRepository bookRepository) {
         this.bookDao = bookDao;
         this.gson = gson;
+        this.bookRepository = bookRepository;
     }
 
 
@@ -23,9 +27,9 @@ public class BookController {
         return new Gson().fromJson(jsonArray, typeOfT);
     }
 
-    public void fetchAllBooks(Context ctx) {
+    public void fetchAllBooks(Context ctx) throws SQLException {
         Map<String, Object> model = new HashMap<>();
-        model.put("result", bookDao.getAllBooks());
+        model.put("result", bookRepository.getAllBooks());
         ctx.json(model);
     }
 
@@ -40,7 +44,7 @@ public class BookController {
         String requestBodyAsString = ctx.body();
         Book requestBodyAsJson = gson.fromJson(requestBodyAsString, Book.class);
         Book newBook = new Book(requestBodyAsJson.title, requestBodyAsJson.author, requestBodyAsJson.isbn);
-        bookDao.saveOne(newBook);
+        bookRepository.saveOne(newBook);
         ctx.status(201);
     }
 

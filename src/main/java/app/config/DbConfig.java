@@ -1,6 +1,8 @@
 package app.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.flywaydb.core.Flyway;
+import org.flywaydb.core.internal.jdbc.JdbcTemplate;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,9 +26,12 @@ public class DbConfig {
         return conn;
     }
 
+
+
     public void runMigrationsUp() {
         Flyway flyway = Flyway.configure().cleanDisabled(false).dataSource(url, user, password).load();
         flyway.clean();
         flyway.migrate();
     }
+
 }

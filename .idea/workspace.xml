@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caed236e-c60b-48dd-ad67-b5801bbd73f9" name="Changes" comment="added authorization middleware">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="caed236e-c60b-48dd-ad67-b5801bbd73f9" name="Changes" comment="connected to database">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/app/service/ItTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/service/ItTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/book/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/book/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/AuthentificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/AuthentificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__InitTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__InitTables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/user/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/app/service/ItTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/service/ItTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/book/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/BookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/book/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/BookDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/book/repository/BookRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/repository/BookRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/config/DbConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/config/DbConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/helpers/AuthentificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/helpers/AuthentificationHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,17 +54,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/postgresql-42.4.0.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/postgresql-42.4.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\New_Javalin_Project\src" />
@@ -172,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657559095726</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="connected to database">
+      <created>1657900147543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657900147543</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,7 +205,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="detached head" />
     <MESSAGE value="added authorization middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="added authorization middleware" />
+    <MESSAGE value="connected to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="connected to database" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/New_Javalin_Project$UserDaoTest.ic" NAME="UserDaoTest Coverage Results" MODIFIED="1657554341271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

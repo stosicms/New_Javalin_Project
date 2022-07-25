@@ -1,5 +1,6 @@
 package app;
 
+import app.book.Book;
 import app.book.BookController;
 import app.book.BookDao;
 import app.book.repository.BookRepository;
@@ -12,8 +13,10 @@ import app.user.UserDao;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
 import io.javalin.http.HttpResponseException;
+import org.flywaydb.core.internal.jdbc.JdbcTemplate;
 
 import java.sql.Connection;
+import java.sql.JDBCType;
 import java.sql.SQLException;
 
 public class Main {
@@ -28,7 +31,7 @@ public class Main {
         UserDao userDao = new UserDao();
         Gson gson = new Gson();
         BookDao bookDao = new BookDao();
-        BookController bookController = new BookController(bookDao, gson);
+        BookController bookController = new BookController(bookDao, gson, bookRepository);
         JwtHelper jwtHelper = new JwtHelper();
         AuthentificationHandler authentificationHandler = new AuthentificationHandler(jwtHelper, userDao);
         UserController userController = new UserController(jwtHelper, gson, userDao);
@@ -51,8 +54,8 @@ public class Main {
 
     }
 
-    public static void main(String args) {
-        DbConfig dbConfig = new DbConfig();
-        dbConfig.runMigrationsUp();
-    }
+//    public static void main(String[] args) {
+//        DbConfig dbConfig = new DbConfig();
+//        dbConfig.runMigrationsUp();
+//    }
 }
