@@ -9,5 +9,7 @@ public class Path {
         public static final String ADD_BOOK = "/addBook";
         public static final String ADD_BOOKS = "/addBooks";
         public static final String DELETE_BOOK = "/deleteBook/{isbn}";
+        public static final String LOGIN = "/login";
+        public static final String VALIDATE = "/validate";
     }
 }
