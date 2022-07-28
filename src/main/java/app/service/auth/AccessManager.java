@@ -1,8 +1,8 @@
 package app.service.auth;
 
-import app.util.Handler;
 import io.javalin.core.security.RouteRole;
 import io.javalin.http.Context;
+import io.javalin.http.Handler;
 
 import java.util.Set;
 

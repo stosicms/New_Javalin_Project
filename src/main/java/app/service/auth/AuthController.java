@@ -17,9 +17,9 @@ public class AuthController {
 
     public void loginUser (Context context) {
         User user = context.bodyAsClass(User.class);
+        User dbUser = userDao.getUserByUsername(user.getUsername());
 
-        boolean isValid = BCrypt.checkpw(user.getUsername(), String.valueOf(
-                userDao.getUserByUsername(context.pathParam("username"))));
+        boolean isValid = BCrypt.checkpw(user.getPassword(), dbUser.getPassword());
 
         if (isValid) {
             String token = jwtService.generateJWT();
