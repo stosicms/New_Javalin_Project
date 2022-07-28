@@ -3,7 +3,7 @@ package app.user;
 public class User {
     public String username;
     public String salt;
-    public String hashedPassword;
+    public String password;
 
     public User () {}
 
@@ -15,13 +15,13 @@ public class User {
         return salt;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public User(String username, String salt, String hashedPassword) {
+    public User(String username, String salt, String password) {
         this.username = username;
         this.salt = salt;
-        this.hashedPassword = hashedPassword;
+        this.password = password;
     }
 }

@@ -14,17 +14,17 @@ public class UserDaoTest extends TestCase {
         String username1 = "perwendel";
         assertEquals("perwendel", userDao.getUserByUsername(username1).username);
         assertEquals("$2a$10$h.dl5J86rGH7I8bD9bZeZe", userDao.getUserByUsername(username1).salt);
-        assertEquals("$2a$10$h.dl5J86rGH7I8bD9bZeZeci0pDt0.VwFTGujlnEaZXPf/q7vM5wO", userDao.getUserByUsername(username1).hashedPassword);
+        assertEquals("$2a$10$h.dl5J86rGH7I8bD9bZeZeci0pDt0.VwFTGujlnEaZXPf/q7vM5wO", userDao.getUserByUsername(username1).password);
 
         String username2 = "davidase";
         assertEquals("davidase",userDao.getUserByUsername(username2).username);
         assertEquals("$2a$10$e0MYzXyjpJS7Pd0RVvHwHe", userDao.getUserByUsername(username2).salt);
-        assertEquals("$2a$10$e0MYzXyjpJS7Pd0RVvHwHe1HlCS4bZJ18JuywdEMLT83E1KDmUhCy", userDao.getUserByUsername(username2).hashedPassword);
+        assertEquals("$2a$10$e0MYzXyjpJS7Pd0RVvHwHe1HlCS4bZJ18JuywdEMLT83E1KDmUhCy", userDao.getUserByUsername(username2).password);
 
         String username3 = "federico";
         assertEquals("federico", userDao.getUserByUsername(username3).username);
         assertEquals("$2a$10$E3DgchtVry3qlYlzJCsyxe", userDao.getUserByUsername(username3).salt);
-        assertEquals("$2a$10$E3DgchtVry3qlYlzJCsyxeSK0fftK4v0ynetVCuDdxGVl1obL.ln2", userDao.getUserByUsername(username3).hashedPassword);
+        assertEquals("$2a$10$E3DgchtVry3qlYlzJCsyxeSK0fftK4v0ynetVCuDdxGVl1obL.ln2", userDao.getUserByUsername(username3).password);
 
     }
 
