@@ -1,7 +1,6 @@
 package app.book.repository;
 
 import app.book.Book;
-import org.flywaydb.core.internal.jdbc.JdbcTemplate;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class BookRepository {
     Connection connection;
 
 
-    public BookRepository(Connection connection){
+    public BookRepository(Connection connection) {
         this.connection = connection;
 
     }
@@ -20,9 +19,9 @@ public class BookRepository {
         String SQL = "SELECT 1";
 
         try {
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(SQL);
-             System.out.println(rs);
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            System.out.println(rs);
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -38,13 +37,13 @@ public class BookRepository {
         try {
             PreparedStatement pst = connection.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
-                    pst.setString(1, book.getIsbn());
-                    pst.setString(2, book.getTitle());
-                    pst.setString(3, book.getAuthor());
+            pst.setString(1, book.getIsbn());
+            pst.setString(2, book.getTitle());
+            pst.setString(3, book.getAuthor());
 
-                    pst.executeUpdate();
-                    ResultSet rs = pst.getGeneratedKeys();
-                    rs.next();
+            pst.executeUpdate();
+            ResultSet rs = pst.getGeneratedKeys();
+            rs.next();
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -53,15 +52,11 @@ public class BookRepository {
 
     private Book getBookInstance(ResultSet res) {
         Book book = null;
-
         try {
-
             book = new Book(res.getString("title"), res.getString("author"), res.getString("isbn"));
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return book;
     }
 
@@ -71,8 +66,8 @@ public class BookRepository {
 
             Statement stmt = connection.createStatement();
             ResultSet res = stmt.executeQuery("""
-            SELECT * FROM "Book";
-            """);
+                    SELECT * FROM "Book";
+                    """);
 
             while (res.next()) {
                 books.add(getBookInstance(res));
@@ -80,6 +75,8 @@ public class BookRepository {
             return books;
         }
     }
+
+
 
 
 }

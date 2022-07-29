@@ -16,11 +16,11 @@ public class JwtHelper {
     Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
             SignatureAlgorithm.HS256.getJcaName());
 
-    public Map<String, String> generateToken(String username) {
+    public Map<String, String> generateToken(String userId) {
         Map<String, String> model = new HashMap<>();
-        System.out.println(username);
+        System.out.println(userId);
         String jwtToken = Jwts.builder()
-                .claim("username", username)
+                .claim("userId", userId)
                 .signWith(hmacKey)
                 .compact();
         model.put("response", jwtToken);

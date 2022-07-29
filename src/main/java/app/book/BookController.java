@@ -1,6 +1,7 @@
 package app.book;
 
 import app.book.repository.BookRepository;
+import app.user.userRepository.UserRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.javalin.http.Context;
@@ -15,7 +16,7 @@ public class BookController {
     BookRepository bookRepository;
     Gson gson;
     BookDao bookDao;
-    public BookController(BookDao bookDao, Gson gson, BookRepository bookRepository) {
+    public BookController(BookDao bookDao, Gson gson, BookRepository bookRepository, UserRepository userRepository) {
         this.bookDao = bookDao;
         this.gson = gson;
         this.bookRepository = bookRepository;

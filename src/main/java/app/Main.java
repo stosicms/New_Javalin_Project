@@ -1,6 +1,5 @@
 package app;
 
-import app.book.Book;
 import app.book.BookController;
 import app.book.BookDao;
 import app.book.repository.BookRepository;
@@ -10,13 +9,12 @@ import app.helpers.ErrorHandler;
 import app.helpers.JwtHelper;
 import app.user.UserController;
 import app.user.UserDao;
+import app.user.userRepository.UserRepository;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
 import io.javalin.http.HttpResponseException;
-import org.flywaydb.core.internal.jdbc.JdbcTemplate;
 
 import java.sql.Connection;
-import java.sql.JDBCType;
 import java.sql.SQLException;
 
 public class Main {
@@ -25,16 +23,16 @@ public class Main {
 
         DbConfig dbConfig = new DbConfig();
         Connection connection = dbConfig.connect();
+        UserRepository userRepository = new UserRepository(connection);
         BookRepository bookRepository = new BookRepository(connection);
         bookRepository.dbPing();
 
-        UserDao userDao = new UserDao();
         Gson gson = new Gson();
         BookDao bookDao = new BookDao();
-        BookController bookController = new BookController(bookDao, gson, bookRepository);
+        BookController bookController = new BookController(bookDao, gson, bookRepository, userRepository);
         JwtHelper jwtHelper = new JwtHelper();
-        AuthentificationHandler authentificationHandler = new AuthentificationHandler(jwtHelper, userDao);
-        UserController userController = new UserController(jwtHelper, gson, userDao);
+        AuthentificationHandler authentificationHandler = new AuthentificationHandler(jwtHelper, userRepository);
+        UserController userController = new UserController(jwtHelper, gson, userRepository);
         ErrorHandler errorHandler = new ErrorHandler();
 
 
