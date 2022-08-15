@@ -1,19 +1,14 @@
 package app.helpers;
 
 import app.user.User;
-import app.user.UserDao;
-import app.user.userRepository.UserRepository;
+import app.user.UserRepository;
 import io.javalin.http.Context;
-import io.javalin.http.Handler;
 import io.javalin.http.HttpResponseException;
-import io.javalin.http.UnauthorizedResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwt;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AuthentificationHandler {
     private final JwtHelper jwtHelper;

@@ -60,7 +60,7 @@ public class BookRepository {
         return book;
     }
 
-    public List<Book> getAllBooks() throws SQLException {
+    public List<Book> getAll() throws SQLException {
         {
             List<Book> books = new ArrayList<>();
 
@@ -76,7 +76,22 @@ public class BookRepository {
         }
     }
 
+    public Book getByIsbn(String isbn) throws SQLException {
+        Book book = new Book();
 
+        PreparedStatement stmt = connection.prepareStatement("""
+                    SELECT * FROM "Book" WHERE isbn = ?;
+                """);
 
+        stmt.setObject(1, isbn);
+        ResultSet res = stmt.executeQuery();
 
+        if (res.next()) {
+            book.setIsbn(res.getString("isbn"));
+            book.setTitle(res.getString("title"));
+            book.setAuthor(res.getString("author"));
+        }
+
+        return book;
+    }
 }

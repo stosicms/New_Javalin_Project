@@ -8,8 +8,7 @@ import app.helpers.AuthentificationHandler;
 import app.helpers.ErrorHandler;
 import app.helpers.JwtHelper;
 import app.user.UserController;
-import app.user.UserDao;
-import app.user.userRepository.UserRepository;
+import app.user.UserRepository;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
 import io.javalin.http.HttpResponseException;
@@ -43,7 +42,7 @@ public class Main {
         app.get("/protected/books", bookController::fetchAllBooks);
         app.get("/protected/book/{isbn}", bookController::fetchOneBook);
         app.post("/protected/book", bookController::saveBook);
-        app.post("/protected/books", bookController::saveBooks);
+        //app.post("/protected/books", bookController::saveBooks);
         app.post("/login", userController::logIn);
         app.post("/signup", userController::signUp);
 

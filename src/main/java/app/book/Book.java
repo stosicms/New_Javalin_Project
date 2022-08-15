@@ -1,9 +1,12 @@
 package app.book;
 
 public class Book {
-    public final String isbn;
-    public final String title;
-    public final String author;
+    public String isbn;
+    public String title;
+    public String author;
+
+    public Book() {
+    }
 
     public Book(String title, String author, String isbn) {
 
@@ -22,5 +25,17 @@ public class Book {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

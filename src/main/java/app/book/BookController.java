@@ -1,7 +1,7 @@
 package app.book;
 
 import app.book.repository.BookRepository;
-import app.user.userRepository.UserRepository;
+import app.user.UserRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.javalin.http.Context;
@@ -30,14 +30,14 @@ public class BookController {
 
     public void fetchAllBooks(Context ctx) throws SQLException {
         Map<String, Object> model = new HashMap<>();
-        model.put("result", bookRepository.getAllBooks());
+        model.put("result", bookRepository.getAll());
         ctx.json(model);
     }
 
-    public void fetchOneBook(Context context) {
+    public void fetchOneBook(Context context) throws SQLException {
         Map<String, Object> model = new HashMap<>();
         String isbn = context.pathParam("isbn");
-        model.put("result", bookDao.getBookByIsbn(isbn));
+        model.put("result", bookRepository.getByIsbn(isbn));
         context.json(model);
     }
 
@@ -49,12 +49,12 @@ public class BookController {
         ctx.status(201);
     }
 
-    public void saveBooks(Context ctx) {
-        String requestBodyAsString = ctx.body();
-        List<Book> requestBodyAsJson = getListFromJson(requestBodyAsString, Book.class);
-        List<Book> newBooks = requestBodyAsJson.stream().map(bookData -> new Book(bookData.title, bookData.author, bookData.isbn)).toList();
-        bookDao.saveMany(newBooks);
-        ctx.status(201);
-    }
+//    public void saveBooks(Context ctx) {
+//        String requestBodyAsString = ctx.body();
+//        List<Book> requestBodyAsJson = getListFromJson(requestBodyAsString, Book.class);
+//        List<Book> newBooks = requestBodyAsJson.stream().map(bookData -> new Book(bookData.title, bookData.author, bookData.isbn)).toList();
+//        bookDao.saveMany(newBooks);
+//        ctx.status(201);
+//    }
 
 }

@@ -4,24 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caed236e-c60b-48dd-ad67-b5801bbd73f9" name="Changes" comment="save book and fetch all">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="caed236e-c60b-48dd-ad67-b5801bbd73f9" name="Changes" comment="finishing user repository">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/user/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/book/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/book/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/book/repository/BookRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/AuthentificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/AuthentificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/JwtHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JwtHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/user/DTOs/UserCredentialsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/user/DTOs/UserCredentialsDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/user/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__InitTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__InitTables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/user/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/user/userRepository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/book/BookControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/book/BookControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/book/BookDaoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/service/ItTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/service/ItTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/user/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/user/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/user/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/user/UserDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/book/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/Book.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/book/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/BookController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/book/repository/BookRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/book/repository/BookRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/helpers/AuthentificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/helpers/AuthentificationHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/user/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V1__InitTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/migration/V1__InitTables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/user/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/user/userRepository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/book/BookControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/book/BookControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/book/BookDaoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/service/ItTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/user/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/user/UserControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/user/UserDaoTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +72,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/postgresql-42.4.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/demo&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -75,8 +87,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\New_Javalin_Project\src\main\resources\db\migration" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="app.user" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.UserControllerTest.shouldLogIn">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="Javalin_vezbanje" />
@@ -90,7 +105,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.shouldFetchAllBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Javalin_vezbanje" />
       <extension name="coverage">
         <pattern>
@@ -99,28 +114,46 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="app.book" />
-      <option name="MAIN_CLASS_NAME" value="app.book.BookDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="app.book.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldFetchAllBooks" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ItTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.shouldFetchOneBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Javalin_vezbanje" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.service.*" />
+          <option name="PATTERN" value="app.book.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="app.service" />
-      <option name="MAIN_CLASS_NAME" value="app.service.ItTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="app.book" />
+      <option name="MAIN_CLASS_NAME" value="app.book.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldFetchOneBook" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.shouldSaveBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Javalin_vezbanje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.book.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.book" />
+      <option name="MAIN_CLASS_NAME" value="app.book.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldSaveBook" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerTest.shouldLogIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Javalin_vezbanje" />
       <extension name="coverage">
         <pattern>
@@ -130,33 +163,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="app.user" />
       <option name="MAIN_CLASS_NAME" value="app.user.UserControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Javalin_vezbanje" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.user" />
-      <option name="MAIN_CLASS_NAME" value="app.user.UserDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="shouldLogIn" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserControllerTest.shouldLogIn" />
+        <item itemvalue="JUnit.BookControllerTest.shouldSaveBook" />
+        <item itemvalue="JUnit.BookControllerTest.shouldFetchOneBook" />
+        <item itemvalue="JUnit.BookControllerTest.shouldFetchAllBooks" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ItTest" />
-        <item itemvalue="JUnit.UserDaoTest" />
-        <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="JUnit.BookDaoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +216,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658779368698</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finishing user repository">
+      <created>1659122348269</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659122348269</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finishing user repository">
+      <created>1659122364282</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659122364282</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +249,8 @@
     <MESSAGE value="added authorization middleware" />
     <MESSAGE value="connected to database" />
     <MESSAGE value="save book and fetch all" />
-    <option name="LAST_COMMIT_MESSAGE" value="save book and fetch all" />
+    <MESSAGE value="finishing user repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="finishing user repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
